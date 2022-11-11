@@ -22,7 +22,7 @@ from pydownloader.downloader import Downloader
 import shorturl
 import xdlink
 
-tl_admin_users = ['Andi9919'] #Poner aqui los user con acceso permanente
+tl_admin_users = ['reymichel2009'] #Poner aqui los user con acceso permanente
 godlist = ['reymichel2009'] #Poner aqui los admin 
 
 async def get_root(username):
