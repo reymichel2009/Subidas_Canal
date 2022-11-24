@@ -330,20 +330,18 @@ async def onmessage(bot:TelegramClient,ev: NewMessage.Event,loop,ret=False):
                 txtsendname = txtname
             txtfile = open(txtsendname,'w')
             urls = []
-            for item in resultlist:
+             for item in resultlist:
+                item = item.split('\t')[-1]
+                a = 'https://repotematico.uo.edu.cu/sites/default/files/Paquete_contenido/' + item 
+                converter.append(a)
                 urls.append(item.url)
-            await bot.edit_message(ev.chat,message,text=f'🖇𝕲𝖊𝖓𝖊𝖗𝖆𝖓𝖉𝖔 𝖃𝕯𝕷𝖎𝖓𝖐𝖘📝...')
-            data = xdlink.parse(urls)
-            if data:
-                txtfile.write(data)
-            else:
-                txtfile.write('🅴🆁🆁🅾🆁 🆇🅳🅻🅸🅽🅺 🅿🅰🆁🆂🅴 🆄🆁🅻🆂')
             txtfile.close()
             await bot.delete_messages(ev.chat,message)
             await bot.send_file(ev.chat,txtsendname,
                                 caption=f'{txtsendname}',
                                 thumb='thumb.png',
                                 buttons=[Button.url('🖥Rey Michel','https://t.me/reymichel2009')])
+            await bot.send_message(ev.chat, 'Se ha subido correctamente')
             for fitem in listdir:
                 try:
                     os.unlink(fitem)
